@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Find Your Cursor Position</title>
+  </head>
+  <body>
+    <div id="cursor-position-box">
+      <span id="xPos"></span>      <span id="yPos"></span>
+      <span id="keypressed"></span>
+    </div>
+  </body>
+
+
+  <style media="screen">
+    body{
+      background-color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      width: 100%;
+    }
+
+    #cursor-position-box {
+      border: 1px solid red;
+      color: red;
+    }
+
+    span{
+      display: block;
+      font-size: 2em;
+      color: #ccc;
+    }
+  </style>
+
+
+  <script type="text/javascript">
+    const page = document.querySelector(':root');
+
+    const xSpan = document.getElementById('xPos');
+    const ySpan = document.getElementById('yPos');
+
+    page.addEventListener('mousemove', function(e){
+      console.log(e.clientX, e.clientY);
+
+      //Change the span elements
+      xSpan.innerHTML = `Cursor X Position: ${e.clientX}`
+      ySpan.innerHTML = `Cursor Y Position: ${e.clientY}`
+    })
+
+    document.querySelector('body').addEventListener('keydown', function(e){
+      let keyPress = document.getElementById('keypressed');
+
+
+      keyPress.innerHTML = `Character ${e.key} = keyCode  ${e.keyCode}`
+      console.log(e);
+    })
+
+  </script>
+</html>
